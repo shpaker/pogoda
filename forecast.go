@@ -9,25 +9,25 @@ import (
 
 type (
 	Forecast struct {
-		City       string `xml:"city,attr"`
-		Exactname  string `xml:"exactname,attr"`
-		Slug       string `xml:"slug,attr"`
-		Country    string `xml:"country,attr"`
-		Part       string `xml:"part,attr"`
-		Lat        string `xml:"lat,attr"`
-		Lon        string `xml:"lon,attr"`
-		Zoom       int    `xml:"zoom,attr"`
-		Id         int    `xml:"id,attr"`
-		Source     string `xml:"source,attr"`
-		Country_id string `xml:"country_id,attr"`
-		Link       string `xml:"link,attr"`
-		Part_id    string `xml:"part_id,attr"`
-		Geoid      int    `xml:"geoid,attr"`
-		Region     int    `xml:"region,attr"`
-		Informer
-		Fact
-		Yesterday
-		ByDays
+		City       string           `xml:"city,attr"`
+		Exactname  string           `xml:"exactname,attr"`
+		Slug       string           `xml:"slug,attr"`
+		Country    string           `xml:"country,attr"`
+		Part       string           `xml:"part,attr"`
+		Lat        string           `xml:"lat,attr"`
+		Lon        string           `xml:"lon,attr"`
+		Zoom       int              `xml:"zoom,attr"`
+		Id         int              `xml:"id,attr"`
+		Source     string           `xml:"source,attr"`
+		Country_id string           `xml:"country_id,attr"`
+		Link       string           `xml:"link,attr"`
+		Part_id    string           `xml:"part_id,attr"`
+		Geoid      int              `xml:"geoid,attr"`
+		Region     int              `xml:"region,attr"`
+		Informer   *WeatherInformer `xml:"informer"`
+		Fact       *Weather         `xml:"fact"`
+		Yesterday  *Weather         `xml:"yesterday"`
+		Days       []Day            `xml:"day"`
 	}
 	Informer struct {
 		Informer *WeatherInformer `xml:"informer"`
