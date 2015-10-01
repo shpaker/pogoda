@@ -1,3 +1,4 @@
+[![godoc badge](http://godoc.org/github.com/shpaker/pogoda?status.png)](http://godoc.org/github.com/shpaker/pogoda)
 # pogoda
 Golang package for working with Yandex weather xml files.
 
