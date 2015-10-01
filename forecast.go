@@ -1,3 +1,4 @@
+// Golang пакет для работы с XML Яндекс погоды
 package pogoda
 
 import (
@@ -8,16 +9,19 @@ import (
 )
 
 type (
+	// Полный прогноз погоды на выбранный город.
+	// Включает данные о фактическом состоянии погоды, состоянии на вчера.
+	// А также данные прогноза на десять дней, включая текущий.
 	Forecast struct {
-		City       string           `xml:"city,attr"`
-		Exactname  string           `xml:"exactname,attr"`
+		City       string           `xml:"city,attr"`      // Наименование города
+		Exactname  string           `xml:"exactname,attr"` // Точное наименование
+		Country    string           `xml:"country,attr"`   // Страна
+		Part       string           `xml:"part,attr"`      // Регион
+		Lat        string           `xml:"lat,attr"`       // Широта
+		Lon        string           `xml:"lon,attr"`       // Долгота
+		Id         int              `xml:"id,attr"`        // Идентификатор
 		Slug       string           `xml:"slug,attr"`
-		Country    string           `xml:"country,attr"`
-		Part       string           `xml:"part,attr"`
-		Lat        string           `xml:"lat,attr"`
-		Lon        string           `xml:"lon,attr"`
 		Zoom       int              `xml:"zoom,attr"`
-		Id         int              `xml:"id,attr"`
 		Source     string           `xml:"source,attr"`
 		Country_id string           `xml:"country_id,attr"`
 		Link       string           `xml:"link,attr"`
@@ -29,21 +33,27 @@ type (
 		Yesterday  *Weather         `xml:"yesterday"`
 		Days       []Day            `xml:"day"`
 	}
+	// Данные о температуре на ближайшую часть дня и следующий день.
 	Informer struct {
 		Informer *WeatherInformer `xml:"informer"`
 	}
+	// Фактические данные о погоде для выбранного города.
 	Fact struct {
 		Fact *Weather `xml:"fact"`
 	}
+	// Вчерашние данные о погоде для выбранного города.
 	Yesterday struct {
 		Yesterday *Weather `xml:"yesterday"`
 	}
+	// Прогноз на 10 дней, включая текущий.
 	ByDays struct {
 		Days []Day `xml:"day"`
 	}
 )
 
-func GetForecast(cityId int, s interface{}) (err error) {
+// "Конструктор" прогноза погоды.
+// cityId - идентификатор города, s - структура для десериализации данных
+func ReqForecast(cityId int, s interface{}) (err error) {
 	res, err := http.Get("http://export.yandex.ru/weather-ng/forecasts/" + strconv.Itoa(cityId) + ".xml")
 	if err != nil {
 		return err
