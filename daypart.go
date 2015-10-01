@@ -1,11 +1,12 @@
 package pogoda
 
 type (
+	// Прогноз на части дня (1 утро, 2 день, 3 вечер, 4 ночь)
 	DayPart struct {
 		TypeId           int              `xml:"typeid,attr"`
 		Type             string           `xml:"type,attr"`
-		TemperatureFrom  int              `xml:"temperature_from"`
-		TemperatureTo    int              `xml:"temperature_to"`
+		TemperatureFrom  float32          `xml:"temperature_from"`
+		TemperatureTo    float32          `xml:"temperature_to"`
 		TemperatureData  *TemperatureData `xml:"temperature-data"`
 		WeatherCondition *Condition       `xml:"weather_condition"`
 		Image            *Image           `xml:"image"`

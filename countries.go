@@ -44,6 +44,7 @@ func NewCountries() (countries *Countries, err error) {
 	return countries, nil
 }
 
+// Функция возвращает страну с именем "name"
 func (countries *Countries) GetCountry(name string) (country *Country, err error) {
 	for _, c := range countries.Countries {
 		if c.Name == name {
@@ -56,6 +57,7 @@ func (countries *Countries) GetCountry(name string) (country *Country, err error
 	return country, nil
 }
 
+// Функция возвращает массив городов с именем "name"
 func (countries *Countries) GetCities(name string) (cities []*City, err error) {
 	for _, country := range countries.Countries {
 		countryCities, _ := country.GetCities(name)

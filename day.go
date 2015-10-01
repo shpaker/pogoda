@@ -21,7 +21,8 @@ type (
 				Code string `xml:"code,attr"`
 			} `xml:"message"`
 		} `xml:"biomet"`
-		DayParts []*DayPart `xml:"day_part"` // Прогноз на части дня (утро, деньб вечер, ночь)
-		Hours    []*Hour    `xml:"hour"`     // Почасовой прогноз
+		DayParts []*DayPart `xml:"day_part"`
+		// Почасовой прогноз
+		Hours []*Hour `xml:"hour"`
 	}
 )
