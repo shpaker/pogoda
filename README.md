@@ -2,13 +2,13 @@
 # pogoda
 Golang package for working with Yandex weather xml files.
 
-##Installing
+## Installing
 ```bash
 $ go get github.com/shpaker/pogoda
 ```
 
-##Example
-####Go code
+## Example
+#### Go code
 ```go
 package main
 
@@ -47,11 +47,11 @@ func main() {
 }
 
 ```
-####Running
+#### Running
 ```bash
 ./example -c Барнаул
 ```
-####Result
+#### Result
 ```bash
  Россия, Алтайский край, Барнаул (ясно)
   Температура: 15°C 
